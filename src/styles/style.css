@@ -1,0 +1,214 @@
+.max-width {
+    max-width: 1440px;
+    
+}
+
+
+.header-container {
+    background-color: #FF8000;
+    height: 7vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.container-logo-head {
+    margin-left: 2rem;
+}
+
+.logo-head {
+    height: 3rem;
+    width: auto;
+}
+
+.logo-img {
+    width: auto;
+    height: 3rem;
+    
+}
+
+.image-container-head {
+    height: 12vh;
+    width: 100%;
+    overflow: hidden;
+
+}
+
+.steak-picture {
+    width: 100%; /* Breite des Bildes auf 100% des Containers setzen */
+    height: 100%; /* Höhe des Bildes auf 100% des Containers setzen */
+    object-fit: cover; /* Bild anpassen, um den Container auszufüllen und Proportionen beizubehalten */
+     /* Verhindert zusätzlichen Abstand unter dem Bild */
+
+}
+
+
+
+.resturant-name h2 {
+    margin-top: 2rem;
+    margin-left: 0.5rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.resturant-name {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.resturant-info {
+    margin-left: 0.5rem;
+}
+
+.resturant-name p {
+    color: #FF8000;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.resturant-name img {
+    height: 3rem;
+    width: auto;
+}
+
+.img-head {
+    width: 100%;
+    height: 12vh;
+    margin-top: 2rem;
+}
+
+.img-head img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.main-food-head h2 {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.order-template {
+    border: 1px solid gray;
+    height: 11vh;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    width: 99%;
+    position: relative;
+}
+
+.order-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #FF8000;
+    color: whitesmoke;
+    border: none;   
+    border-bottom: 1px solid gray;
+    border-left: 1px solid gray;
+}
+
+h4 {
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.food-p {
+    margin-top: 0px;
+    margin-left: 0.5rem;
+    font-size: 1rem;
+}
+
+.footer {
+    height: 8vh;
+    background-color: #FF8000;
+    border-top: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+
+.footer-logo {
+    height: 3rem;
+    width: auto;
+}
+
+.footer-logo-orange {
+    height: 3rem;
+    width: auto;
+}
+
+.show-myfood {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    margin: auto;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: white;
+    background-color: blue;
+    height: 5vh;
+    margin-bottom: 1rem;
+}
+
+.cart-container {
+    display: flex;    
+    width: 100%;
+    height: 10vh;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid black;
+}
+
+.order-container {
+    display: flex;   
+    width: 40%;
+    justify-content: space-evenly;
+    gap: 30px;
+}
+
+.delete-and-price {
+    display: flex;    
+    width: 60%;
+    justify-content: space-evenly;
+}
+
+.header-cart {
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+
+span {
+    transition: all 0.1s ease;
+}
+
+span:hover {
+    border: 1px solid orange; 
+   
+    cursor: pointer;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.ddelete:hover {
+    cursor: pointer;
+    border: 1px solid orange; 
+}
+
