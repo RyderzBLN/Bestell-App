@@ -45,8 +45,21 @@ function renderFood(food){
 }
 
 
+function availableInCart(index){
+  let steak = steakdishes[index]
+  let isInCart = cart.find(dish => dish.name === steak.name)
+
+  if (isInCart){
+    steakdishes[index].quantity += 1;   
+  } else {
+    steakdishes[index].quantity += 1;
+    cart.push(steakdishes[index]);    
+  }
+}
+
+
 function addCart(index){
-  cart.push(steakdishes[index]);
+  availableInCart(index);
   renderCartArticel();
 }
 
@@ -64,9 +77,10 @@ function renderCartArticel() {
   for (let i = 0; i < cart.length; i++) {
     cartRef.innerHTML += cartTemplate(cart[i], i);
   }
-
-  console.log(cart.includes("Ribeye Steak", 0))
 }
 
-console.log(cart.includes("Ribeye Steak", 0))
+let foundItem = steakdishes.find(dish => dish.name === "Ribeye Steak");
+
+console.log(foundItem);  // Gibt das Objekt mit dem Namen "Ribeye Steak" zurück
+
 
