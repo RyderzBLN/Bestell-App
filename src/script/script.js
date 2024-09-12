@@ -45,15 +45,15 @@ function renderFood(food){
 }
 
 
-function availableInCart(index){
-  let steak = steakdishes[index]
-  let isInCart = cart.find(dish => dish.name === steak.name)
+function availableInCart(index) {
+  let steak = { ...steakdishes[index] }; // Kopiere das Steak-Objekt
+  let isInCart = cart.find(dish => dish.name === steak.name);
 
-  if (isInCart){
-    steakdishes[index].quantity += 1;   
+  if (isInCart) {
+    isInCart.quantity += 1; // Erhöhe nur die Menge im Warenkorb
   } else {
-    steakdishes[index].quantity += 1;
-    cart.push(steakdishes[index]);    
+    steak.quantity = 1; // Setze die Menge auf 1
+    cart.push(steak); // Füge die Kopie zum Warenkorb hinzu
   }
 }
 
@@ -64,9 +64,18 @@ function addCart(index){
 }
 
 
-function deleteFromCart(index) {
-  cart.splice(index, 1);
-  renderCartArticel(); 
+
+function addPrice(cartIndex) {
+  cart[cartIndex].quantity += 1; // Erhöhe die Menge des Artikels im Warenkorb
+  renderCartArticel();
+}
+
+
+
+
+function deleteFromCart(cartIndex) {
+  cart.splice(cartIndex, 1); // Entferne das Element aus dem Warenkorb
+  renderCartArticel();
 }
 
 
@@ -78,9 +87,5 @@ function renderCartArticel() {
     cartRef.innerHTML += cartTemplate(cart[i], i);
   }
 }
-
-let foundItem = steakdishes.find(dish => dish.name === "Ribeye Steak");
-
-console.log(foundItem);  // Gibt das Objekt mit dem Namen "Ribeye Steak" zurück
 
 

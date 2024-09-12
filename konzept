@@ -5,3 +5,9 @@
 // keine negativ menge möglich
 // zusammen rechnen, der gericht preise 
 // beim klicken von gericht kurz orange auf blinken
+
+
+
+//BUG beheben einmal gelöscht erneut hinzufügen quanity nicht zurück gesetzt
+
+// BUG seperate variable für den preis !
