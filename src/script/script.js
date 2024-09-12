@@ -71,6 +71,15 @@ function addPrice(cartIndex) {
 }
 
 
+function downPrice(cartIndex) {
+  let articel = cart[cartIndex].quantity;
+
+  cart[cartIndex].quantity -= 1;
+  if (articel <= 1){
+    deleteFromCart(cartIndex)
+  }
+  renderCartArticel();
+}
 
 
 function deleteFromCart(cartIndex) {
