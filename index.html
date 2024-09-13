@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./src/fonts/Montserrat.css">
     <link rel="stylesheet" href="./src/styles/main.css">
     <link rel="stylesheet" href="./src/styles/style.css">
     <link rel="stylesheet" href="./src/styles/responsiv/320px.css">
@@ -40,7 +41,7 @@
                         <h2>Steak House</h2>
                         <p>4.2 von 5 ⭐</p>
                     </div>
-                    <img src="./src/img/fork-knife-symbol.webp">
+                    
 
                 </div>
 
@@ -57,11 +58,23 @@
 
 
                 </div>
-                <div class="show-myfood">Warenkorb anzeigen</div>
+                <button id="show" class="show-myfood">Warenkorb anzeigen</button>
 
             </div>
-
-            <div id="shopping-cart" class="warenkorb"></div>
+            <div class="output">
+                <button id="close" class="close-sidebar">✖</button>
+                <div id="shopping-cart" class="warenkorb"></div>               
+                <div class="center">
+                    <div id="totalsum"></div>
+                    <div id="delivery-cost"></div>
+                    <div id="all-total"></div>
+                </div>
+                <button onclick="showModal()" class="d-none" id="buy">Jetzt bestellen</button>
+            </div>
+            
+                
+            </div>
+            
         </div>
 
 
@@ -73,9 +86,13 @@
 
     </div>
 
+    <div id="modal">
+        <div id="modal-content">
+          Test Bestellung eingegangen
+        </div>
+      </div>
 
 
 
 </body>
-
 </html>

@@ -1,5 +1,11 @@
 @media (min-width: 1024px){
 
+  .max-width {
+    max-width: 1440px;
+    margin: auto;
+  
+  }
+
  .image-container-head {
     width: 100%;
     height: 20vh;
@@ -44,6 +50,7 @@
       .order-template {
         width: 99%;
         height: 13vh;
+        border-bottom: 0.5px solid gray;
       }
 
       .order-button {
@@ -77,6 +84,8 @@
         width: auto;
     }
 
+    
+
     .show-myfood {
         display: none;
     }
@@ -90,15 +99,40 @@
       width: 75%;
     }
 
-    .warenkorb {
+    .output {
       position: sticky;
       top: 50px;
       right: 0px;
-      height: 100vh;
-     width: 25%;
-     border: 1px solid black;
+      height: 90vh;
+      width: 25%;
+      
+      overflow-y: auto
 
     }
 
+    #totalsum {
+      display: flex;
+      align-items: end;
+      font-size: 2rem;
+      height: 5vh;
+      
+    }
+
+    #delivery-cost {
+      display: flex;
+      align-items: center;
+      font-size: 2rem;
+      height: 5vh;
+      font-size: 2rem;
+    }
+
+    #all-total {
+      font-size: 2rem;
+    }
+
+    
+   .close-sidebar {
+    display: none;
+   }
   
 }

@@ -33,6 +33,7 @@ let steakdishes = [
 
 
 let cart = [];   
+let sum = [];
 
 
 function renderFood(food){
@@ -46,27 +47,29 @@ function renderFood(food){
 
 
 function availableInCart(index) {
-  let steak = { ...steakdishes[index] }; // Kopiere das Steak-Objekt
+  let steak = { ...steakdishes[index] }; 
   let isInCart = cart.find(dish => dish.name === steak.name);
 
   if (isInCart) {
-    isInCart.quantity += 1; // Erhöhe nur die Menge im Warenkorb
+    isInCart.quantity += 1; 
   } else {
-    steak.quantity = 1; // Setze die Menge auf 1
-    cart.push(steak); // Füge die Kopie zum Warenkorb hinzu
+    steak.quantity = 1;
+    cart.push(steak); 
   }
+
 }
 
 
-function addCart(index){
+function addCart(index, cartIndex){
   availableInCart(index);
   renderCartArticel();
+  renderButton();
 }
-
 
 
 function addPrice(cartIndex) {
-  cart[cartIndex].quantity += 1; // Erhöhe die Menge des Artikels im Warenkorb
+  let article = cart[cartIndex];
+  article.quantity += 1; 
   renderCartArticel();
 }
 
@@ -79,12 +82,14 @@ function downPrice(cartIndex) {
     deleteFromCart(cartIndex)
   }
   renderCartArticel();
+  
 }
 
 
 function deleteFromCart(cartIndex) {
-  cart.splice(cartIndex, 1); // Entferne das Element aus dem Warenkorb
+  cart.splice(cartIndex, 1); 
   renderCartArticel();
+  
 }
 
 
@@ -95,6 +100,53 @@ function renderCartArticel() {
   for (let i = 0; i < cart.length; i++) {
     cartRef.innerHTML += cartTemplate(cart[i], i);
   }
+
+  renderTotalSum();
 }
 
+
+function renderTotalSum() {
+  let total = cart.reduce((accumulator, item) => accumulator + (item.price * item.quantity), 0);
+  let delivery = 1.99
+  let deliveryPrice = total + delivery;
+  let contentRef = document.getElementById("totalsum");
+  let deliveryRef = document.getElementById("delivery-cost");
+  let totalRef = document.getElementById("all-total");
+  contentRef.innerHTML = "Preis: " + total.toFixed(2) + " " + "€";
+  deliveryRef.innerHTML = "Lieferkosten: " + delivery + " " + "€";
+  totalRef.innerHTML = "Gesamtpreis: " +  deliveryPrice.toFixed(2) + " " + "€";
+}
+
+
+function renderButton(){
+  document.getElementById("buy").className = "buy";
+}
+
+function deleteAll(){
+  document.getElementById('modal').style.display = 'flex';
+  document.getElementById("buy").className = "d-none";
+  cart = [];
+}
+
+function showModal() {
+  deleteAll();
+  renderCartArticel();
+  renderTotalSum(); 
+  
+  setTimeout(() => {
+    modal.style.display = 'none';
+  }, 5000);
+}
+
+
+document.getElementById('show').addEventListener('click', function() {
+  const sidebar = document.querySelector('.output');
+  sidebar.classList.toggle('active');
+});
+
+
+document.getElementById('close').addEventListener('click', function() {
+  const sidebar = document.querySelector('.output');
+  sidebar.classList.remove('active');
+});
 
