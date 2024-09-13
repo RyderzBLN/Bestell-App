@@ -3,11 +3,13 @@
 
 body {
     font-style: "Montserrat", sans-serif;
+
 }
 
 
 .max-width {
     max-width: 1400px;   
+    width: 100%;
 }
  
   .content-wrapper {
@@ -180,6 +182,7 @@ h4 {
     justify-content: center;
     align-items: center;
     display: flex;
+    
 }
 
 
@@ -556,6 +559,13 @@ button:hover {
      .close-sidebar {
       display: none;
      }
+
+     .footer {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        position: fixed;
+     }
     
   }
 
@@ -600,7 +610,7 @@ a:hover, a:focus {
 
 @keyframes blinkOrange {
     0% { background-color: transparent; }
-    50% { background-color: #ffb469; }
+    50% { background-color:rgba(255, 180, 105, 0.35);}
     100% { background-color: transparent; }
   }
   
