@@ -63,33 +63,33 @@ let steakdishes = [
 ];
 
 
-let cart = [];   
+let cart = [];
 
 
-function renderFood(food){
-    let contentRef = document.getElementById("food-content");
-    contentRef.innerHTML = "";
+function renderFood(food) {
+  let contentRef = document.getElementById("food-content");
+  contentRef.innerHTML = "";
 
-    for (let i = 0; i < food.length; i++) {
-        contentRef.innerHTML += orderTemplate(food[i], i);        
-    }
-}
-
-
-function availableInCart(index) {
-  let steak = { ...steakdishes[index] }; 
-  let isInCart = cart.find(dish => dish.name === steak.name);
-
-  if (isInCart) {
-    isInCart.quantity += 1; 
-  } else {
-    steak.quantity = 1;
-    cart.push(steak); 
+  for (let i = 0; i < food.length; i++) {
+    contentRef.innerHTML += orderTemplate(food[i], i);
   }
 }
 
 
-function addCart(index, cartIndex){
+function availableInCart(index) {
+  let steak = { ...steakdishes[index] };
+  let isInCart = cart.find(dish => dish.name === steak.name);
+
+  if (isInCart) {
+    isInCart.quantity += 1;
+  } else {
+    steak.quantity = 1;
+    cart.push(steak);
+  }
+}
+
+
+function addCart(index, cartIndex) {
   availableInCart(index);
   renderCartArticel();
   renderButton();
@@ -99,7 +99,7 @@ function addCart(index, cartIndex){
 
 function addPrice(cartIndex) {
   let article = cart[cartIndex];
-  article.quantity += 1; 
+  article.quantity += 1;
   renderCartArticel();
   blinkCart(cartIndex);
 }
@@ -109,26 +109,25 @@ function downPrice(cartIndex) {
   let articel = cart[cartIndex].quantity;
 
   cart[cartIndex].quantity -= 1;
-  if (articel <= 1){
+  if (articel <= 1) {
     deleteFromCart(cartIndex)
   }
   updateBuyButton()
-  renderCartArticel();  
+  renderCartArticel();
   blinkCart(cartIndex);
 }
 
 
 function deleteFromCart(cartIndex) {
-  cart.splice(cartIndex, 1); 
+  cart.splice(cartIndex, 1);
   renderCartArticel();
-  updateBuyButton()
-  
+  updateBuyButton();
 }
 
 
 function renderCartArticel() {
   let cartRef = document.getElementById("shopping-cart");
-  cartRef.innerHTML = ""; 
+  cartRef.innerHTML = "";
 
   for (let i = 0; i < cart.length; i++) {
     cartRef.innerHTML += cartTemplate(cart[i], i);
@@ -141,7 +140,7 @@ function renderTotalSum() {
   let total = cart.reduce((accumulator, item) => accumulator + (item.price * item.quantity), 0);
   let delivery = 1.99;
   let deliveryPrice = total + delivery;
-  
+
   document.getElementById("totalsum").innerHTML = "Preis: " + total.toFixed(2) + " €";
   document.getElementById("delivery-cost").innerHTML = "Lieferkosten: " + delivery.toFixed(2) + " €";
   document.getElementById("all-total").innerHTML = "Gesamtpreis: " + deliveryPrice.toFixed(2) + " €";
@@ -150,27 +149,29 @@ function renderTotalSum() {
 
 
 function updateBuyButton() {
-  const buyButton = document.getElementById('buy'); 
-  if (cart.length === 0) {   
+  const buyButton = document.getElementById('buy');
+  if (cart.length === 0) {
     buyButton.classList.add('d-none');
-  }}
+  }
+}
 
 
-function renderButton(){
+function renderButton() {
   document.getElementById("buy").className = "buy";
 }
 
 
-function updateAllPrice(){
+function updateAllPrice() {
   if (cart.length === 0) {
     document.getElementById("totalsum").innerHTML = "";
     document.getElementById("delivery-cost").innerHTML = "";
     document.getElementById("all-total").innerHTML = "";
     return;
-  }}
+  }
+}
 
 
-function deleteAll(){
+function deleteAll() {
   document.getElementById('modal').style.display = 'flex';
   document.getElementById("buy").className = "d-none";
   cart = [];
@@ -179,17 +180,17 @@ function deleteAll(){
 
 function reloadPage() {
   setTimeout(() => {
-    location.reload(); 
+    location.reload();
   }, 5000);
 }
 
 
 function showModal() {
   document.querySelector('.output').style.right = '-100%';
-  
+
   deleteAll();
   renderCartArticel();
-  renderTotalSum();  
+  renderTotalSum();
   setTimeout(() => {
     modal.style.display = 'none';
   }, 4000);
@@ -199,42 +200,35 @@ function showModal() {
 
 function blinkContainer(index) {
   const container = document.getElementById(`blink${index}`);
-  
+
   if (container) {
     container.classList.add('blink');
-    
-
     setTimeout(() => {
       container.classList.remove('blink');
-    }, 500); 
+    }, 500);
   }
 }
 
 
 function blinkCart(cartIndex) {
   const container = document.getElementById(`cartblink${cartIndex}`);
-  
-  if (container) {
-    container.classList.add('blink'); // Blink-Klasse hinzufügen
 
+  if (container) {
+    container.classList.add('blink');
     setTimeout(() => {
-      container.classList.remove('blink'); // Nach 500ms wieder entfernen
-    }, 500); 
+      container.classList.remove('blink');
+    }, 500);
   }
 }
 
 
-
-
-
-
-document.getElementById('show').addEventListener('click', function() {
+document.getElementById('show').addEventListener('click', function () {
   const sidebar = document.querySelector('.output');
   sidebar.classList.toggle('active');
 });
 
 
-document.getElementById('close').addEventListener('click', function() {
+document.getElementById('close').addEventListener('click', function () {
   const sidebar = document.querySelector('.output');
   sidebar.classList.remove('active');
 });

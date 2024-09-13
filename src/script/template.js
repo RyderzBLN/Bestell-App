@@ -1,5 +1,5 @@
-function orderTemplate(food, index){
-    return  `<div id=blink${index} class="order-template">
+function orderTemplate(food, index) {
+  return `<div id=blink${index} class="order-template">
         <h4>${food.name}</h4>
         <p class="food-p">${food.description}</p>
         <p class="food-p">${food.price}€</p>
@@ -8,7 +8,7 @@ function orderTemplate(food, index){
 }
 
 function cartTemplate(food, cartIndex) {
-    return `
+  return `
     <h4 class="header-cart">${food.name}</h4>
 <div id="cartblink${cartIndex}" class="cart-container">
   <div class="order-container">
@@ -34,4 +34,4 @@ function cartTemplate(food, cartIndex) {
   </div>
 </div> ` }
 
-  
+
