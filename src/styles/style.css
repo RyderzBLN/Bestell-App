@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 body {
     font-style: "Montserrat", sans-serif;
 }
@@ -45,6 +48,28 @@ body {
 
 }
 
+.steak-logo {
+    height: 12rem;
+    padding: 1.5rem;
+    width: auto;
+    border-radius: 50%; /* Macht das Bild rund */
+    border: 3px solid #FF8000; /* Farbe der Umrandung */
+    z-index: 300;
+    top: 22%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    background-color: white;
+}
+
+@media (min-width: 1024px){
+    .steak-logo {
+        left: 35%;
+        top: 27.25%;
+    }
+    
+}
+
 .steak-picture {
     width: 100%; /* Breite des Bildes auf 100% des Containers setzen */
     height: 100%; /* Höhe des Bildes auf 100% des Containers setzen */
@@ -59,7 +84,7 @@ body {
     margin-top: 2rem;
     margin-left: 0.5rem;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 2rem !important;
 }
 
 .resturant-name {
@@ -74,7 +99,7 @@ body {
 
 .resturant-name p {
     color: #FF8000;
-    font-size: 1.25rem;
+    font-size: 1.75rem;
     font-weight: bold;
     margin-left: 0.5rem;
     margin-top: 0.5rem;
@@ -100,14 +125,15 @@ body {
 
 .main-food-head h2 {
     margin-top: 1.5rem;
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    margin-top: 2rem;
+    margin-bottom: 2.5rem;
     margin-left: 0.5rem;
 }
 
 .order-template {
     border: 1px solid rgb(205, 201, 201);
-    height: 11vh;
+    height: 15.5vh;
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
     width: 99%;
@@ -132,13 +158,14 @@ h4 {
     margin-top: 0.25rem;
     margin-bottom: 0.5rem;
     margin-left: 0.5rem;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
 }
 
 .food-p {
     margin-top: 0px;
     margin-left: 0.5rem;
-    font-size: 1rem;
+    font-size: 1.20rem; /* smartphone */
+
     color: rgb(94, 93, 93);
 }
 
@@ -172,17 +199,17 @@ h4 {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 75%;
+    width: 90%;
     max-width: 95%;
     margin: auto;
     border-radius: 10px;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: bold;
     letter-spacing: 1px;
     color: white;
     border: 1px solid gray;
-    background-color: blue;
-    height: 5vh;
+    background-color: #FF8000;
+    height: 6vh;
     margin-bottom: 1rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3)
 }
@@ -195,6 +222,7 @@ h4 {
     justify-content: space-between;
     font-size: 2rem;
     margin-bottom: 1rem;
+    border-bottom: 1px solid gray;
    
     
     
@@ -288,17 +316,17 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 75%;
+    width: 95%;
     max-width: 95%;
     margin: auto;
     border-radius: 10px;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: bold;
     letter-spacing: 1px;
     color: white;
     border: 1px solid gray;
-    background-color: blue;
-    height: 5vh;
+    background-color: #FF8000;
+    height: 6vh;
     margin-top: 2rem;
     margin-bottom: 1rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3)
@@ -332,15 +360,35 @@ button:hover {
 
   @media (min-width: 550px){
     h4 {
-        font-size: 1.3rem
+        font-size: 1.65rem
+    }
+
+    h2 {
+        font-size: 2rem;
     }
 
     .food-p {
-        font-size: 1.2rem;
+        font-size: 1.45rem; /* mitte */
     }
 
     .show-myfood {
         font-size: 1.75rem;
+    }
+
+    .steak-logo {
+        height: 10rem;
+    }
+}
+
+@media (max-width: 550px){
+    .steak-logo {
+        height: 9rem;
+    }
+}
+
+@media (max-width: 400px){
+    .steak-logo {
+        height: 6.6rem;
     }
 }
 
@@ -410,11 +458,11 @@ button:hover {
         }
   
         h4 {
-          font-size: 2rem;
+          font-size: 1.75rem;
         }
   
         .food-p {
-          font-size: 1.5rem;
+          font-size: 1.4rem; /* desktop */
         }
   
         .order-template {
@@ -494,7 +542,7 @@ body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-style: "Montserrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 a {
@@ -526,7 +574,7 @@ a:hover, a:focus {
 /* Definiere die Blinken-Animation */
 @keyframes blinkOrange {
     0% { background-color: transparent; }
-    50% { background-color: orange; }
+    50% { background-color: #ffb469; }
     100% { background-color: transparent; }
   }
   
@@ -534,3 +582,9 @@ a:hover, a:focus {
     animation: blinkOrange 0.5s; /* Dauer der Animation: 0.5 Sekunden */
   }
   
+
+  @media (max-width: 550px){
+    .order-button {
+        font-size: 1.6rem;
+    }
+  }

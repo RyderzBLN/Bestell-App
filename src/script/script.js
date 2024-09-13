@@ -28,12 +28,42 @@ let steakdishes = [
     "description": "Ein imposantes, extra großes Tomahawk-Steak, saftig und reich an Geschmack, serviert mit gerösteten Gemüsebeilagen.",
     "price": 45.99,
     "quantity": 0
+  },
+  // Neue Gerichte:
+  {
+    "name": "Porterhouse Steak",
+    "description": "Ein großzügiges Porterhouse-Steak, das Filet und T-Bone vereint, perfekt gegrillt und serviert mit einer Champignonsoße.",
+    "price": 39.99,
+    "quantity": 0
+  },
+  {
+    "name": "Flank Steak",
+    "description": "Ein kräftiges Flank Steak, mariniert und über offenem Feuer gegrillt, serviert mit einer würzigen Chimichurri-Sauce.",
+    "price": 24.99,
+    "quantity": 0
+  },
+  {
+    "name": "Skirt Steak",
+    "description": "Ein zartes Skirt Steak, perfekt gewürzt und gegrillt, serviert mit gebratenen Zwiebeln und Paprika.",
+    "price": 26.99,
+    "quantity": 0
+  },
+  {
+    "name": "Flat Iron Steak",
+    "description": "Ein saftiges Flat Iron Steak, bekannt für seine zarte Textur, serviert mit einer Knoblauch-Kräuter-Butter.",
+    "price": 28.99,
+    "quantity": 0
+  },
+  {
+    "name": "Chuck Eye Steak",
+    "description": "Ein herzhaftes Chuck Eye Steak, vollmundig und saftig, serviert mit einer Balsamico-Reduktion und gegrilltem Gemüse.",
+    "price": 23.99,
+    "quantity": 0
   }
 ];
 
 
 let cart = [];   
-let sum = [];
 
 
 function renderFood(food){
@@ -71,6 +101,7 @@ function addPrice(cartIndex) {
   let article = cart[cartIndex];
   article.quantity += 1; 
   renderCartArticel();
+  blinkCart(cartIndex);
 }
 
 
@@ -83,6 +114,7 @@ function downPrice(cartIndex) {
   }
   updateBuyButton()
   renderCartArticel();  
+  blinkCart(cartIndex);
 }
 
 
@@ -117,7 +149,6 @@ function renderTotalSum() {
 }
 
 
-
 function updateBuyButton() {
   const buyButton = document.getElementById('buy'); 
   if (cart.length === 0) {   
@@ -129,6 +160,7 @@ function renderButton(){
   document.getElementById("buy").className = "buy";
 }
 
+
 function updateAllPrice(){
   if (cart.length === 0) {
     document.getElementById("totalsum").innerHTML = "";
@@ -138,12 +170,12 @@ function updateAllPrice(){
   }}
 
 
-
 function deleteAll(){
   document.getElementById('modal').style.display = 'flex';
   document.getElementById("buy").className = "d-none";
   cart = [];
 }
+
 
 function reloadPage() {
   setTimeout(() => {
@@ -166,19 +198,33 @@ function showModal() {
 
 
 function blinkContainer(index) {
-  // Finde den Container basierend auf dem Index
   const container = document.getElementById(`blink${index}`);
   
   if (container) {
-    // Füge die Blink-Klasse hinzu
     container.classList.add('blink');
     
-    // Entferne die Blink-Klasse nach der Dauer der Animation (500ms)
+
     setTimeout(() => {
       container.classList.remove('blink');
-    }, 500); // Zeit in Millisekunden
+    }, 500); 
   }
 }
+
+
+function blinkCart(cartIndex) {
+  const container = document.getElementById(`cartblink${cartIndex}`);
+  
+  if (container) {
+    container.classList.add('blink'); // Blink-Klasse hinzufügen
+
+    setTimeout(() => {
+      container.classList.remove('blink'); // Nach 500ms wieder entfernen
+    }, 500); 
+  }
+}
+
+
+
 
 
 
