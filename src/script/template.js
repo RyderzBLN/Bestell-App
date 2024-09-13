@@ -1,5 +1,5 @@
 function orderTemplate(food, index){
-    return  `<div class="order-template">
+    return  `<div id=blink${index} class="order-template">
         <h4>${food.name}</h4>
         <p class="food-p">${food.description}</p>
         <p class="food-p">${food.price}$</p>

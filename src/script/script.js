@@ -56,7 +56,6 @@ function availableInCart(index) {
     steak.quantity = 1;
     cart.push(steak); 
   }
-
 }
 
 
@@ -64,6 +63,7 @@ function addCart(index, cartIndex){
   availableInCart(index);
   renderCartArticel();
   renderButton();
+  blinkContainer(index)
 }
 
 
@@ -81,14 +81,15 @@ function downPrice(cartIndex) {
   if (articel <= 1){
     deleteFromCart(cartIndex)
   }
-  renderCartArticel();
-  
+  updateBuyButton()
+  renderCartArticel();  
 }
 
 
 function deleteFromCart(cartIndex) {
   cart.splice(cartIndex, 1); 
   renderCartArticel();
+  updateBuyButton()
   
 }
 
@@ -100,27 +101,43 @@ function renderCartArticel() {
   for (let i = 0; i < cart.length; i++) {
     cartRef.innerHTML += cartTemplate(cart[i], i);
   }
-
   renderTotalSum();
 }
 
 
 function renderTotalSum() {
   let total = cart.reduce((accumulator, item) => accumulator + (item.price * item.quantity), 0);
-  let delivery = 1.99
+  let delivery = 1.99;
   let deliveryPrice = total + delivery;
-  let contentRef = document.getElementById("totalsum");
-  let deliveryRef = document.getElementById("delivery-cost");
-  let totalRef = document.getElementById("all-total");
-  contentRef.innerHTML = "Preis: " + total.toFixed(2) + " " + "€";
-  deliveryRef.innerHTML = "Lieferkosten: " + delivery + " " + "€";
-  totalRef.innerHTML = "Gesamtpreis: " +  deliveryPrice.toFixed(2) + " " + "€";
+  
+  document.getElementById("totalsum").innerHTML = "Preis: " + total.toFixed(2) + " €";
+  document.getElementById("delivery-cost").innerHTML = "Lieferkosten: " + delivery.toFixed(2) + " €";
+  document.getElementById("all-total").innerHTML = "Gesamtpreis: " + deliveryPrice.toFixed(2) + " €";
+  updateAllPrice();
 }
+
+
+
+function updateBuyButton() {
+  const buyButton = document.getElementById('buy'); 
+  if (cart.length === 0) {   
+    buyButton.classList.add('d-none');
+  }}
 
 
 function renderButton(){
   document.getElementById("buy").className = "buy";
 }
+
+function updateAllPrice(){
+  if (cart.length === 0) {
+    document.getElementById("totalsum").innerHTML = "";
+    document.getElementById("delivery-cost").innerHTML = "";
+    document.getElementById("all-total").innerHTML = "";
+    return;
+  }}
+
+
 
 function deleteAll(){
   document.getElementById('modal').style.display = 'flex';
@@ -128,15 +145,41 @@ function deleteAll(){
   cart = [];
 }
 
-function showModal() {
-  deleteAll();
-  renderCartArticel();
-  renderTotalSum(); 
-  
+function reloadPage() {
   setTimeout(() => {
-    modal.style.display = 'none';
+    location.reload(); 
   }, 5000);
 }
+
+
+function showModal() {
+  document.querySelector('.output').style.right = '-100%';
+  
+  deleteAll();
+  renderCartArticel();
+  renderTotalSum();  
+  setTimeout(() => {
+    modal.style.display = 'none';
+  }, 4000);
+  reloadPage();
+}
+
+
+function blinkContainer(index) {
+  // Finde den Container basierend auf dem Index
+  const container = document.getElementById(`blink${index}`);
+  
+  if (container) {
+    // Füge die Blink-Klasse hinzu
+    container.classList.add('blink');
+    
+    // Entferne die Blink-Klasse nach der Dauer der Animation (500ms)
+    setTimeout(() => {
+      container.classList.remove('blink');
+    }, 500); // Zeit in Millisekunden
+  }
+}
+
 
 
 document.getElementById('show').addEventListener('click', function() {
